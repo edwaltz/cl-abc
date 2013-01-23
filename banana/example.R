@@ -1,80 +1,103 @@
 # Toy example of "banana".
 # Initial settings.
-source("utils_banana.R")
-num <- 5000000  # number of simulated parameters
-threshold <- .001  # accuracy of the ABC
-n <- num*threshold
+source("base/cl-abc.R")
+source("banana/utils.R")
 
-# 2 dim with and without adjustment
+# constant
+num <- 5000000
+tol <- .001
+n <- num*tol
+pmin <- -100
+pmax <- 100
+
+
+# run the algorithm.
+# 1.
+B <- 0  # bananacity is 0.
+res1 <- list()
+
+# full
 p <- 2
-obs <- matrix(20, nrow=1, ncol=p, byrow=TRUE)  # observations
-prior <- matrix(runif(num*p, -50, 50), nrow=num, ncol=p)
-pairwise.2dim <- clabc.times(prior, obs, num, 1, threshold, "kernel", 2, 1)
-theta.margin <- matrix(0, nrow=n, ncol=p)
-for (ind in 1:p)
-{
-  prior <- matrix(runif(num*p, -50, 50), nrow=num, ncol=p)
-  margin <- clabc.times.margin(prior, obs, num, 1, threshold, "kernel", 1, ind)
-  theta.margin[, ind] <- margin[, ind]
-}
-adj.2dim <- adjMargin(pairwise.2dim, theta.margin)
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res1$dim2 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par
 
-# 5 dim with and without adjustment
+# pair
+p <- 3
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res1$dim3 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par[, 1:2]
+
 p <- 5
-obs <- matrix(20, nrow=1, ncol=p, byrow=TRUE)  # observations
-prior <- matrix(runif(num*p, -50, 50), nrow=num, ncol=p)
-pairwise.5dim <- clabc.times(prior, obs, num, 1, threshold, "kernel", 2, 1)
-theta.margin <- matrix(0, nrow=n, ncol=p)
-for (ind in 1:p)
-{
-  prior <- matrix(runif(num*p, -50, 50), nrow=num, ncol=p)
-  margin <- clabc.times.margin(prior, obs, num, 1, threshold, "kernel", 1, ind)
-  theta.margin[, ind] <- margin[, ind]
-}
-adj.5dim <- adjMargin(pairwise.5dim, theta.margin)
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res1$dim5 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par[, 1:2]
 
-# 10 dim with and without adjustment
 p <- 10
-obs <- matrix(20, nrow=1, ncol=p, byrow=TRUE)  # observations
-prior <- matrix(runif(num*p, -50, 50), nrow=num, ncol=p)
-pairwise.10dim <- clabc.times(prior, obs, num, 1, threshold, "kernel", 2, 1)
-theta.margin <- matrix(0, nrow=n, ncol=p)
-for (ind in 1:p)
-{
-  prior <- matrix(runif(num*p, -50, 50), nrow=num, ncol=p)
-  margin <- clabc.times.margin(prior, obs, num, 1, threshold, "kernel", 1, ind)
-  theta.margin[, ind] <- margin[, ind]
-}
-adj.10dim <- adjMargin(pairwise.10dim, theta.margin)
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res1$dim10 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par[, 1:2]
 
-# 20 dim with and without adjustment
-p <- 20
-obs <- matrix(20, nrow=1, ncol=p, byrow=TRUE)  # observations
-prior <- matrix(runif(num*p, -50, 50), nrow=num, ncol=p)
-pairwise.20dim <- clabc.times(prior, obs, num, 1, threshold, "kernel", 2, 1)
-theta.margin <- matrix(0, nrow=n, ncol=p)
-for (ind in 1:p)
-{
-  prior <- matrix(runif(num*p, -50, 50), nrow=num, ncol=p)
-  margin <- clabc.times.margin(prior, obs, num, 1, threshold, "kernel", 1, ind)
-  theta.margin[, ind] <- margin[, ind]
-}
-adj.20dim <- adjMargin(pairwise.20dim, theta.margin)
+gc()
 
-# Plot
-old <- par(mfrow=c(2, 2))
-# without adjustment
-contour(grid.x, grid.y, grid.z, xlim=x.lim, xlab="theta1",
-        ylim=y.lim, ylab="theta2", main="2 dim before adj. cor=.6598")
-points(pairwise.2dim[, 1], pairwise.2dim[, 2], pch=".")
-contour(grid.x, grid.y, grid.z, xlim=x.lim, xlab="theta1",
-        ylim=y.lim, ylab="theta2", main="5 dim before adj. cor=.0209")
-points(pairwise.5dim[, 1], pairwise.5dim[, 2], pch=".")
-# with adjustment
-contour(grid.x, grid.y, grid.z, xlim=x.lim, xlab="theta1",
-        ylim=y.lim, ylab="theta2", main="2 dim with adj. cor=.6750")
-points(adj.2dim[, 1], adj.2dim[, 2], pch=".")
-contour(grid.x, grid.y, grid.z, xlim=x.lim, xlab="theta1",
-        ylim=y.lim, ylab="theta2", main="5 dim with adj. cor=.0240")
-points(adj.5dim[, 1], adj.5dim[, 2], pch=".")
-par(old)
+
+# 2.
+B <- .01  # bananacity is 0.01.
+res2 <- list()
+
+# full
+p <- 2
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res2$dim2 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par
+
+# pair
+p <- 3
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res2$dim3 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par[, 1:2]
+
+p <- 5
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res2$dim5 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par[, 1:2]
+
+p <- 10
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res2$dim10 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par[, 1:2]
+
+gc()
+
+
+# 3.
+B <- .075  # bananacity is 0.075.
+res3 <- list()
+
+# full
+p <- 2
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res3$dim2 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par
+
+# pair
+p <- 3
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res3$dim3 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par[, 1:2]
+
+p <- 5
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res3$dim5 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par[, 1:2]
+
+p <- 10
+obs <- matrix(0, nrow=1, ncol=p, byrow=TRUE)
+prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
+res3$dim10 <- clabc.step(prior, obs, tol, rbanana.rot, "pair")$par[, 1:2]
+
+gc()
+
+
+# draw picture
+par(mfrow=c(3, 4))

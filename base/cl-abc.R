@@ -1,5 +1,6 @@
 # Composite Likelihood ABC
 library(abc)
+library(MASS)
 
 sim.prior <- function(data, num) {
   # Simulate from prior estimated by the standard kernel density estimatior
@@ -15,8 +16,8 @@ sim.prior <- function(data, num) {
   d <- ncol(data)
   H <- var(data)*(4/((d+2)*n))^(2/(d+4))
   pos <- sample(n, num, TRUE, rep(1/n, n))
-  res.sim <- data[pos, ]+mvrnorm(num, rep(0, d), H)
-  return(res.sim)
+  ret.sim <- data[pos, ]+mvrnorm(num, rep(0, d), H)
+  return(ret.sim)
 }
 
 clabc <- function(obs, prior, sim, h) {
@@ -33,8 +34,8 @@ clabc <- function(obs, prior, sim, h) {
   #   estimated distribution from the par and the corresponding bandwidth matrix.
 
   par <- abc(obs, prior, sim, h, "rejection")$unadj.values
-  res.sim <- sim.prior(par, nrow(prior))
-  return(list(par=par, prior=res.sim))
+  ret.sim <- sim.prior(par, nrow(prior))
+  return(list(par=par, prior=ret.sim))
 }
 
 clabc.step <- function(prior, obs, h, rlik, type="paire") {
@@ -53,18 +54,19 @@ clabc.step <- function(prior, obs, h, rlik, type="paire") {
   op <- options(warn=(-1))  # suppress warnings
   ptm.final <- proc.time()  # time record
   temp <- prior
-  res <- list()
+  obs.val <- as.vector(obs)
+  ret <- list()
   
   if (type=="full") {
     sim <- rlik(temp)
-    res <- clabc(obs, temp, sim, h)
-    temp <- res$prior
+    ret <- clabc(obs, temp, sim, h)
+    temp <- ret$prior
   } else if (type=="pair") {
-    order <- combn(length(obs), 2)  # order of the composite likelihood
+    order <- combn(length(obs.val), 2)  # order of the composite likelihood
     for (ind in 1:(p*(p-1)/2)) {
       sim <- rlik(temp)
-      res <- clabc(obs[order[, ind]], temp, sim[, order[, ind]], h)
-      temp <- res$prior
+      ret <- clabc(obs.val[order[, ind]], temp, sim[, order[, ind]], h)
+      temp <- ret$prior
     }
   }
 
@@ -72,7 +74,7 @@ clabc.step <- function(prior, obs, h, rlik, type="paire") {
   cost.final <- proc.time()-ptm.final
   print(cost.final["elapsed"])
   options(op)
-  return(list(par=res$par, prior=res$prior))
+  return(ret)
 }
 
 adj.margin <- function(join, margin) {

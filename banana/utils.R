@@ -1,7 +1,4 @@
 # Untils for "banana" shaped distribution example.
-source("base/cl-abc.R")
-library(MASS)
-
 rbanana <- function(par, b=B, scale=1) {
   # Simulate from the standard banana distribution.
   #
