@@ -38,11 +38,12 @@ clabc <- function(obs, prior, sim, h) {
   return(list(par=par, prior=ret.sim))
 }
 
-clabc.step <- function(prior, obs, h, rlik, type="paire", ...) {
+clabc.step <- function(num, p, obs, h, rlik, type="paire", ...) {
   # ABC for 1 obs.
   #
   # Args:
-  #   prior - prior of the parameters;
+  #   num - number of samples form the prior of the parameters;
+  #   p - dimension of the parameter;
   #   obs - observed summary statistic;
   #   h - threshold;
   #   rlik - function generate random points from the specific likelihood;
@@ -53,21 +54,21 @@ clabc.step <- function(prior, obs, h, rlik, type="paire", ...) {
   
   op <- options(warn=(-1))  # suppress warnings
   ptm.final <- proc.time()  # time record
-  temp <- prior
   obs.val <- as.vector(obs)
-  p <- length(obs.val)
+  d <- length(obs.val)  # dimension for summary statistic
+  prior <- matrix(runif(num*p, -100, 100), nrow=num)
   ret <- list()
   
   if (type=="full") {
-    sim <- rlik(temp, ndim=p, ...)
-    ret <- clabc(obs, temp, sim, h)
-    temp <- ret$prior
+    sim <- rlik(prior, ndim=d, ...)
+    ret <- clabc(obs, prior, sim, h)
+    prior <- ret$prior
   } else if (type=="pair") {
-    order <- combn(p, 2)  # order of the composite likelihood
-    for (ind in 1:(p*(p-1)/2)) {
-      sim <- rlik(temp, ndim=p, ...)
-      ret <- clabc(obs.val[order[, ind]], temp, sim[, order[, ind]], h)
-      temp <- ret$prior
+    order <- combn(d, 2)  # order of the composite likelihood
+    for (ind in 1:(d*(d-1)/2)) {
+      sim <- rlik(prior, ndim=d, ...)
+      ret <- clabc(obs.val[order[, ind]], prior, sim[, order[, ind]], h)
+      prior <- ret$prior
     }
   }
 
