@@ -6,9 +6,6 @@ source("banana/utils.R")
 # constant
 num <- 10000000
 tol <- .0005
-p <- 2
-pmin <- -100
-pmax <- 100
 n <- num*tol
 
 
@@ -20,21 +17,20 @@ res1 <- list()
 
 # full
 obs <- matrix(0, nrow=1, ncol=2, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res1$dim2 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par
+res1$dim2 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par
 
 # pair
 obs <- matrix(0, nrow=1, ncol=3, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res1$dim3 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res1$dim3 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=5, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res1$dim5 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res1$dim5 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
 
-obs <- matrix(0, nrow=1, ncol=10, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res1$dim10 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+obs <- matrix(0, nrow=1, ncol=7, byrow=TRUE)
+res1$dim7 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+
+obs <- matrix(0, nrow=1, ncol=9, byrow=TRUE)
+res1$dim9 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
 
 gc()
 
@@ -46,24 +42,22 @@ res2 <- list()
 
 # full
 obs <- matrix(0, nrow=1, ncol=2, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res2$dim2 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par
+res2$dim2 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par
 
 # pair
 obs <- matrix(0, nrow=1, ncol=3, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res2$dim3 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res2$dim3 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=5, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res2$dim5 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res2$dim5 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
 
-obs <- matrix(0, nrow=1, ncol=10, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res2$dim10 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+obs <- matrix(0, nrow=1, ncol=7, byrow=TRUE)
+res2$dim7 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+
+obs <- matrix(0, nrow=1, ncol=9, byrow=TRUE)
+res2$dim9 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
 
 gc()
-
 
 # 3.
 B <- .05  # bananacity is 0.075.
@@ -72,21 +66,20 @@ res3 <- list()
 
 # full
 obs <- matrix(0, nrow=1, ncol=2, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res3$dim2 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par
+res3$dim2 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par
 
 # pair
 obs <- matrix(0, nrow=1, ncol=3, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res3$dim3 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res3$dim3 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=5, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res3$dim5 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res3$dim5 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
 
-obs <- matrix(0, nrow=1, ncol=10, byrow=TRUE)
-prior <- matrix(runif(num*p, pmin, pmax), nrow=num, ncol=p)
-res3$dim10 <- clabc.step(prior, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+obs <- matrix(0, nrow=1, ncol=7, byrow=TRUE)
+res3$dim7 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+
+obs <- matrix(0, nrow=1, ncol=9, byrow=TRUE)
+res3$dim9 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
 
 gc()
 

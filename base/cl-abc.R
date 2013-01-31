@@ -2,6 +2,9 @@
 library(abc)
 library(MASS)
 
+pmin <- -100
+pmax <- 100
+
 sim.prior <- function(data, num) {
   # Simulate from prior estimated by the standard kernel density estimatior
   # 
@@ -33,9 +36,10 @@ clabc <- function(obs, prior, sim, h) {
   #   A list of the abc estimation of parameters par, simulated prior of the 
   #   estimated distribution from the par and the corresponding bandwidth matrix.
 
-  par <- abc(obs, prior, sim, h, "rejection")$unadj.values
-  ret.sim <- sim.prior(par, nrow(prior))
-  return(list(par=par, prior=ret.sim))
+  ret <- list()
+  ret$par <- abc(obs, prior, sim, h, "rejection")$unadj.values
+  ret$sim <- sim.prior(ret$par, nrow(prior))
+  return(ret)
 }
 
 clabc.step <- function(num, p, obs, h, rlik, type="paire", ...) {
@@ -56,7 +60,7 @@ clabc.step <- function(num, p, obs, h, rlik, type="paire", ...) {
   ptm.final <- proc.time()  # time record
   obs.val <- as.vector(obs)
   d <- length(obs.val)  # dimension for summary statistic
-  prior <- matrix(runif(num*p, -100, 100), nrow=num)
+  prior <- matrix(runif(num*p, pmin, pmax), nrow=num)
   ret <- list()
   
   if (type=="full") {
