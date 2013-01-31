@@ -1,6 +1,5 @@
 # Toy example of "banana".
 # Initial settings.
-source("base/cl-abc.R")
 source("banana/utils.R")
 
 # constant

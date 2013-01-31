@@ -1,6 +1,5 @@
 # Analysis
 # initial settings.
-source("base/cl-abc.R")
 source("banana/utils.R")
 
 # constant
