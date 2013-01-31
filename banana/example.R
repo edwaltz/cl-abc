@@ -92,4 +92,33 @@ gc()
 
 
 # draw picture
-# par(mfrow=c(3, 4))
+lim.x <- c(pmin, pmax)
+lim.y <- c(pmin, pmax)
+par(mfrow=c(3, 4))
+
+plot(res1[[1]], pch=".", main="2 dim, B=0, cor=0.9498", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(res1[[2]], pch=".", main="3 dim, B=0, cor=0.8633", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(res1[[3]], pch=".", main="5 dim, B=0, cor=0.7003", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(res1[[4]], pch=".", main="10 dim, B=0, cor=0.3065", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+
+plot(res2[[1]], pch=".", main="2 dim, B=0.01, cor=0.9152", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(res2[[2]], pch=".", main="3 dim, B=0.01, cor=0.8328", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(res2[[3]], pch=".", main="5 dim, B=0.01, cor=0.7114", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(res2[[4]], pch=".", main="10 dim, B=0.01, cor=0.4456", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+
+plot(res3[[1]], pch=".", main="2 dim, B=0.05, cor=0.4456", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(res3[[2]], pch=".", main="3 dim, B=0.05, cor=0.3334", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(res3[[3]], pch=".", main="5 dim, B=0.05, cor=0.1312", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(res3[[4]], pch=".", main="10 dim, B=0.05, cor=-0.0282", 
+     xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
