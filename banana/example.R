@@ -1,6 +1,6 @@
 # Toy example of "banana".
 # Initial settings.
-source("banana/utils.R")
+source("./banana/utils.R")
 
 # constant
 num <- 10000000
@@ -16,20 +16,20 @@ res1 <- list()
 
 # full
 obs <- matrix(0, nrow=1, ncol=2, byrow=TRUE)
-res1$dim2 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par
+res1$dim2 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par
 
 # pair
 obs <- matrix(0, nrow=1, ncol=3, byrow=TRUE)
-res1$dim3 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res1$dim3 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=5, byrow=TRUE)
-res1$dim5 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res1$dim5 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=7, byrow=TRUE)
-res1$dim7 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res1$dim7 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=9, byrow=TRUE)
-res1$dim9 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res1$dim9 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 gc()
 
@@ -41,20 +41,20 @@ res2 <- list()
 
 # full
 obs <- matrix(0, nrow=1, ncol=2, byrow=TRUE)
-res2$dim2 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par
+res2$dim2 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par
 
 # pair
 obs <- matrix(0, nrow=1, ncol=3, byrow=TRUE)
-res2$dim3 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res2$dim3 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=5, byrow=TRUE)
-res2$dim5 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res2$dim5 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=7, byrow=TRUE)
-res2$dim7 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res2$dim7 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=9, byrow=TRUE)
-res2$dim9 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res2$dim9 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 gc()
 
@@ -65,20 +65,20 @@ res3 <- list()
 
 # full
 obs <- matrix(0, nrow=1, ncol=2, byrow=TRUE)
-res3$dim2 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par
+res3$dim2 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par
 
 # pair
 obs <- matrix(0, nrow=1, ncol=3, byrow=TRUE)
-res3$dim3 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res3$dim3 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=5, byrow=TRUE)
-res3$dim5 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res3$dim5 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=7, byrow=TRUE)
-res3$dim7 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res3$dim7 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 obs <- matrix(0, nrow=1, ncol=9, byrow=TRUE)
-res3$dim9 <- clabc.step(num, 2, obs, tol, rbanana.rot, "pair", b=B)$par[, 1:2]
+res3$dim9 <- clabc.step(num, 2, obs, tol, "banana.rot", "pair", b=B)$par[, 1:2]
 
 gc()
 
