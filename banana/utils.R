@@ -24,17 +24,13 @@ clabc.step <- function(num, p, obs, h, type, b) {
   n <- num*h  # number of parameter points
   ret <- list()
   ret$prior <- matrix(runif(num*p, pmin, pmax), nrow=num)
-  sim <- matrix(0, nrow=num, ncol=d)  # simulated data
   rotate.mat <- matrix(c(cos(pi/4), -sin(pi/4), cos(pi/4), sin(pi/4)), nrow=2)
-  
-  if (p>d) {
-    stop("The dim of summstat must be higher than that of par.")
-  }
   
   op <- options(warn=(-1))  # suppress warnings
   ptm.final <- proc.time()  # time record
   if (type=="full") {
     # 1.simulation of likelihood function.
+    sim <- matrix(0, nrow=num, ncol=d)  # simulated data
     sim[, 1] <- rnorm(num, sd=10)
     sim[, 2] <- -b*sim[, 1]^2+100*b+rnorm(num)
     sim[, 1:2] <- sim[, 1:2]%*%rotate.mat+ret$prior[, 1:2]
@@ -47,11 +43,11 @@ clabc.step <- function(num, p, obs, h, type, b) {
     # 2.abc.
     ret$par <- abc(obs.val, ret$prior, sim, h, "rejection")$unadj.values
     # 3.simulation of the prior distribution.
-    ret$prior <- ret$par[sample(n, num, TRUE), ]+
-      mvrnorm(num, rep(0, p), var(ret$par)*(4/((p+2)*n))^(2/(p+4)))
+    ret$prior <- ret$par[sample(n, num, TRUE), ]+mvrnorm(num, rep(0, p), var(ret$par)*(4/((p+2)*n))^(2/(p+4)))
     gc()
   } else if (type=="pair") {
     order <- combn(d, 2)  # order of the composite likelihood
+    sim <- matrix(0, nrow=num, ncol=d)  # simulated data
     for (ind in 1:(d*(d-1)/2)) {
       # 1.simulation of likelihood function.
       sim[, 1] <- rnorm(num, sd=10)
@@ -64,11 +60,9 @@ clabc.step <- function(num, p, obs, h, type, b) {
         }
       }
       # 2.abc.
-      ret$par <- abc(obs.val[order[, ind]], ret$prior, sim[, order[, ind]], h, 
-                     "rejection")$unadj.values
+      ret$par <- abc(obs.val[order[, ind]], ret$prior, sim[order[, ind]], h, "rejection")$unadj.values
       # 3.simulation of the prior distribution.
-      ret$prior <- ret$par[sample(n, num, TRUE), ]+
-        mvrnorm(num, rep(0, p), var(ret$par)*(4/((p+2)*n))^(2/(p+4)))
+      ret$prior <- ret$par[sample(n, num, TRUE), ]+mvrnorm(num, rep(0, p), var(ret$par)*(4/((p+2)*n))^(2/(p+4)))
       gc()
     }
   }

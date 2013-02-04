@@ -58,3 +58,36 @@ rbanana.rot <- function(par, ndim, b, scale=1) {
   }
   return(data)
 }
+
+rbanana  <- function(par, nda, ndo, b, type, scale=1) {
+  # Simulate from the banana distribution.
+  #
+  # Args:
+  #   par - unknown parameters for likelihood;
+  #   nda - all dimensions for summary statistics;
+  #   ndo - indicator of simulated dimensions for summary statistics;
+  #   b - bananacity;
+  #   type - standard or rotated;
+  #   scale - the scale of the marginal distribution.
+  #
+  # Returns:
+  #   Simulation for the banana likelihood.
+  p <- ncol(par)
+  if (p>nda) {
+    stop("The dim of summstat must be higher than that of par.")
+  }
+  n <- nrow(par)
+  data <- matrix(0, nrow=n, ncol=da)  # simulated data
+  rotate.mat <- switch(type, standard=diag(2), 
+         rotated=matrix(c(cos(pi/4), -sin(pi/4), cos(pi/4), sin(pi/4)), nrow=2)
+  data[, 1] <- rnorm(n, sd=10)
+  data[, 2] <- -b*data[, 1]^2+100*b+rnorm(n)
+  data[, 1:2] <- data[, 1:2]%*%rotate.mat+par[, 1:2]
+  if (ndim>2) {
+    data[, -c(1, 2)] <- mvrnorm(n, rep(0, ndim-2), diag(ndim-2))
+  }
+  if (p>2) {
+    data[, 3:p]  <- par[, 3:p] + data[, 3:p]
+  }
+  return(data)
+}
