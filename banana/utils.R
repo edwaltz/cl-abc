@@ -2,9 +2,6 @@
 library(abc)
 library(MASS)
 
-pmin <- -100
-pmax <- 100
-
 clabc.step <- function(num, p, obs, h, type, b) {
   # ABC for 1 obs.
   #
@@ -18,6 +15,9 @@ clabc.step <- function(num, p, obs, h, type, b) {
   #
   # Return:
   #   The sample points.
+  
+  pmin <- -100
+  pmax <- 100
   
   obs.val <- as.vector(obs)
   d <- length(obs.val)  # dimension for summary statistic
@@ -60,7 +60,7 @@ clabc.step <- function(num, p, obs, h, type, b) {
         }
       }
       # 2.abc.
-      ret$par <- abc(obs.val[order[, ind]], ret$prior, sim[order[, ind]], h, "rejection")$unadj.values
+      ret$par <- abc(obs.val[order[, ind]], ret$prior, sim[, order[, ind]], h, "rejection")$unadj.values
       # 3.simulation of the prior distribution.
       ret$prior <- ret$par[sample(n, num, TRUE), ]+mvrnorm(num, rep(0, p), var(ret$par)*(4/((p+2)*n))^(2/(p+4)))
       gc()
