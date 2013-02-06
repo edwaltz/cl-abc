@@ -27,7 +27,7 @@ clabc.step <- function(num, p, obs, h, type, b) {
   rotate.mat <- matrix(c(cos(pi/4), -sin(pi/4), cos(pi/4), sin(pi/4)), nrow=2)
   
   op <- options(warn=(-1))  # suppress warnings
-  ptm.final <- proc.time()  # time record
+#   ptm.final <- proc.time()  # time record
   if (type=="full") {
     # 1.simulation of likelihood function.
     sim <- matrix(0, nrow=num, ncol=d)  # simulated data
@@ -68,8 +68,8 @@ clabc.step <- function(num, p, obs, h, type, b) {
   }
   
   # Finalize the running.
-  cost.final <- proc.time()-ptm.final
-  print(cost.final["elapsed"])
+#   cost.final <- proc.time()-ptm.final
+#   print(cost.final["elapsed"])
   options(op)
   return(ret)
 }

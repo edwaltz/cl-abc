@@ -2,12 +2,14 @@
 # Initial settings.
 setwd("/home/edwaltz/Documents/R/cl-abc")
 source("./banana/utils.R")
+library(parallel)
+
 # constant
 num <- 5000000
 tol <- .001
 n <- num*tol
-
 total <- 50  # total looping times
+
 pmin <- -100
 pmax <- 100
 lim.x <- c(pmin, pmax)
@@ -18,8 +20,9 @@ b <- c(0, .01, .05)  # bananacity
 # d.par & d.summ should have the same length.
 d.par <- c(2, 2, 2, 2)
 d.summ <- c(3, 5, 7, 9)
-ret.cor <- array(0, dim=c(total, length(b), length(d.summ)))
-  
+
+ret.cor <- array(0, dim=c(total, length(b), length(d.summ)))  # correlation matrix
+
 for (times in 1:total) {
   res <- list()
   pdf(paper="a4")
@@ -35,6 +38,7 @@ for (times in 1:total) {
       gc()
     }
   }
+  dev.off()
   rm(res)
   gc()
 }
