@@ -2,7 +2,6 @@
 # Initial settings.
 setwd("/home/edwaltz/Documents/R/cl-abc")
 source("./banana/utils.R")
-library(parallel)
 
 # constant
 num <- 5000000

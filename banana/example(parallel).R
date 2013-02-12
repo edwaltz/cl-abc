@@ -40,7 +40,7 @@ get.corr <- function(total) {   # total looping times
 }
 
 ptm.final <- proc.time()  # time record
-jobs <- lapply(c(8, rep(6, 7)), function(x) mcparallel(get.corr(x)))
+jobs <- lapply(c(rep(20, 3)), function(x) mcparallel(get.corr(x)))
 ret <- mccollect(jobs)
 cost.final <- proc.time()-ptm.final
 print(cost.final["elapsed"])
