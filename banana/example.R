@@ -29,11 +29,11 @@ for (times in 1:total) {
   for (ind in 1:length(b)) {
     for (ind2 in 1:length(d.summ)) {
       obs <- matrix(0, nrow=1, ncol=d.summ[ind2], byrow=TRUE)
-      res[[(ind-1)*5+ind2]] <- clabc.step(num, d.par[ind2], obs, tol, "pair", b=b[ind])$par[, 1:2]
+      res[[(ind-1)*length(d.summ)+ind2]] <- clabc.step(num, d.par[ind2], obs, tol, "pair", b=b[ind])$par[, 1:2]
       ret.cor[times, ind, ind2] <- cor(res[[(ind-1)*5+ind2]])[1, 2]
       # draw picture
       title <- paste0(d.summ[ind2], " dim, B=", b[ind], ", cor=", sprintf("%.4f.", ret.cor[times, ind, ind2]))
-      plot(res[[(ind-1)*5+ind2]], pch=".", main=title, xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+      plot(res[[(ind-1)*length(d.summ)+ind2]], pch=".", main=title, xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
       gc()
     }
   }

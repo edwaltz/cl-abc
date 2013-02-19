@@ -90,3 +90,9 @@ adj.margin <- function(join, margin) {
   }
   return(adj)
 }
+
+dbanana <- function(y, b=B) {
+  # The true joint posterior.
+  x <- matrix(c(cos(pi/4), -sin(pi/4), cos(pi/4), sin(pi/4)), nrow=2) %*% y
+  dnorm(x[1], sd=10) * dnorm(x[2]- b * x[1]^2 + 100 * b, sd=1)
+}
