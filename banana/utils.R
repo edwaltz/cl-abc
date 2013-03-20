@@ -66,10 +66,7 @@ clabc.step <- function(num, p, obs, h, type, b) {
       gc()
     }
   }
-  
-  # Finalize the running.
-#   cost.final <- proc.time()-ptm.final
-#   print(cost.final["elapsed"])
+
   options(op)
   return(ret)
 }
@@ -93,6 +90,6 @@ adj.margin <- function(join, margin) {
 
 dbanana <- function(y, b=B) {
   # The true joint posterior.
-  x <- matrix(c(cos(pi/4), -sin(pi/4), cos(pi/4), sin(pi/4)), nrow=2) %*% y
+  x <- matrix(c(cos(pi / 4), -sin(pi / 4), cos(pi / 4), sin(pi / 4)), nrow=2) %*% y
   dnorm(x[1], sd=10) * dnorm(x[2]- b * x[1]^2 + 100 * b, sd=1)
 }

@@ -1,4 +1,4 @@
-# Time test for correlation analysis.
+# Time test for particle number analysis.
 library(abc)
 library(MASS)
 
@@ -71,7 +71,7 @@ clabc.step <- function(num, p, obs, h, type, b) {
   return(ret)
 }
 
-num <- 10000000
+num <- 100000000
 tol <- .0001
 n <- num * tol
 
@@ -81,24 +81,21 @@ lim.x <- c(pmin, pmax)
 lim.y <- c(pmin, pmax)
 
 # run the algorithm.
-b <- c(0, .01, .05)  # bananacity
+B <- .01  # bananacity
 # d.par & d.summ should have the same length.
 d.par <- c(2, 2, 2, 2, 2, 2, 2, 2, 2, 2)
 d.summ <- c(3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
 
 res <- list()
-ret.cor <- matrix(0, nrow=length(b), ncol=length(d.summ))  # correlation matrix
+ret.cor <- vector("numeric", length(d.summ))  # correlation matrix
 
 ptm.final <- proc.time()  # time record
 
-for (ind in 1:length(b)) {
-  for (ind2 in 1:length(d.summ)) {
-    obs <- matrix(0, nrow=1, ncol=d.summ[ind2], byrow=TRUE)
-    res[[(ind - 1) * length(d.summ) + ind2]] <- 
-      clabc.step(num, d.par[ind2], obs, tol, "pair", b=b[ind])$par[, 1:2]
-    ret.cor[ind, ind2] <- cor(res[[(ind - 1) * length(d.summ) + ind2]])[1, 2]
-    gc()
-  }
+for (ind in 1:length(d.summ)) {
+  obs <- matrix(0, nrow=1, ncol=d.summ[ind], byrow=TRUE)
+  res[[ind]] <- clabc.step(num, d.par[ind], obs, tol, "pair", b=B)$par[, 1:2]
+  ret.cor[ind] <- cor(res[[ind]])[1, 2]
+  gc()
 }
 
 cost.final <- proc.time() - ptm.final
@@ -106,7 +103,7 @@ cost.final <- proc.time() - ptm.final
 print(cost.final)
 print(ret.cor)
 
-save(res, ret.cor, file="xin-clabc-banana-corr.rda")
+save(res, ret.cor, file=paste0("xin-clabc-banana-num(", n, ").rda"))
 
 rm(res, ret.cor)
 gc()

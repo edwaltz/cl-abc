@@ -24,16 +24,15 @@ get.corr <- function(total) {   # total looping times
   ret.cor <- array(0, dim=c(total, length(b), length(d.summ)))  # correlation matrix
   
   for (times in 1:total) {
-    res <- list()
     for (ind in 1:length(b)) {
       for (ind2 in 1:length(d.summ)) {
         obs <- matrix(0, nrow=1, ncol=d.summ[ind2], byrow=TRUE)
-        res[[(ind-1)*length(d.summ)+ind2]] <- clabc.step(num, d.par[ind2], obs, tol, "pair", b=b[ind])$par[, 1:2]
-        ret.cor[times, ind, ind2] <- cor(res[[(ind-1)*5+ind2]])[1, 2]
+        tmp <- clabc.step(num, d.par[ind2], obs, tol, "pair", b=b[ind])$par[, 1:2]
+        ret.cor[times, ind, ind2] <- cor(tmp)[1, 2]
+        rm(tmp)
         gc()
       }
     }
-    rm(res)
     gc()
   }
   return(ret.cor)

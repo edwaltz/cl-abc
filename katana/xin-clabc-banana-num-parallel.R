@@ -1,6 +1,7 @@
-# Time test for correlation analysis.
+# Parallel
 library(abc)
 library(MASS)
+library(parallel)
 
 clabc.step <- function(num, p, obs, h, type, b) {
   # ABC for 1 obs.
@@ -71,42 +72,45 @@ clabc.step <- function(num, p, obs, h, type, b) {
   return(ret)
 }
 
-num <- 10000000
-tol <- .0001
-n <- num * tol
+get.corr <- function(total) {   # total looping times
+  # constant
+  num <- 100000000
+  tol <- .0001
+  n <- num * tol
+  
+  pmin <- -100
+  pmax <- 100
+  lim.x <- c(pmin, pmax)
+  lim.y <- c(pmin, pmax)
+  
+  # run the algorithm.
+  B <- .01  # bananacity
+  # d.par & d.summ should have the same length.
+  d.par <- c(2, 2, 2, 2, 2, 2, 2, 2, 2, 2)
+  d.summ <- c(3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+  
+  ret.cor <- matrix(0, nrow=total, ncol=length(d.summ)))  # correlation matrix
 
-pmin <- -100
-pmax <- 100
-lim.x <- c(pmin, pmax)
-lim.y <- c(pmin, pmax)
-
-# run the algorithm.
-b <- c(0, .01, .05)  # bananacity
-# d.par & d.summ should have the same length.
-d.par <- c(2, 2, 2, 2, 2, 2, 2, 2, 2, 2)
-d.summ <- c(3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
-
-res <- list()
-ret.cor <- matrix(0, nrow=length(b), ncol=length(d.summ))  # correlation matrix
+  for (times in 1:total) {
+    for (ind in 1:length(d.summ)) {
+      obs <- matrix(0, nrow=1, ncol=d.summ[ind], byrow=TRUE)
+      tmp <- clabc.step(num, d.par[ind], obs, tol, "pair", b=B)$par[, 1:2]
+      ret.cor[times, ind] <- cor(tmp)[1, 2]
+      rm(tmp)
+      gc()
+    }
+  gc()
+  }
+  return(ret.cor)
+}
 
 ptm.final <- proc.time()  # time record
 
-for (ind in 1:length(b)) {
-  for (ind2 in 1:length(d.summ)) {
-    obs <- matrix(0, nrow=1, ncol=d.summ[ind2], byrow=TRUE)
-    res[[(ind - 1) * length(d.summ) + ind2]] <- 
-      clabc.step(num, d.par[ind2], obs, tol, "pair", b=b[ind])$par[, 1:2]
-    ret.cor[ind, ind2] <- cor(res[[(ind - 1) * length(d.summ) + ind2]])[1, 2]
-    gc()
-  }
-}
+jobs <- lapply(c(rep(6, 10)), function(x) mcparallel(get.corr(x)))
+ret <- mccollect(jobs)
+save(ret, file=paste0("xin-clabc-banana-num(", n, ")-raw.rda"))
+rm(ret)
+gc()
 
 cost.final <- proc.time() - ptm.final
-
-print(cost.final)
-print(ret.cor)
-
-save(res, ret.cor, file="xin-clabc-banana-corr.rda")
-
-rm(res, ret.cor)
-gc()
+print(cost.final["elapsed"])
