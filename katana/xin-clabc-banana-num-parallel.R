@@ -86,8 +86,8 @@ get.corr <- function(total) {   # total looping times
   # run the algorithm.
   B <- .01  # bananacity
   # d.par & d.summ should have the same length.
-  d.par <- c(2, 2, 2, 2, 2, 2, 2, 2, 2, 2)
-  d.summ <- c(3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+  d.par <- c(2, 2, 2, 2)
+  d.summ <- c(3, 6, 9, 12)
   
   ret.cor <- matrix(0, nrow=total, ncol=length(d.summ)))  # correlation matrix
 
@@ -106,7 +106,7 @@ get.corr <- function(total) {   # total looping times
 
 ptm.final <- proc.time()  # time record
 
-jobs <- lapply(c(rep(6, 10)), function(x) mcparallel(get.corr(x)))
+jobs <- lapply(c(rep(5, 10)), function(x) mcparallel(get.corr(x)))
 ret <- mccollect(jobs)
 save(ret, file=paste0("xin-clabc-banana-num(", n, ")-raw.rda"))
 rm(ret)

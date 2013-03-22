@@ -83,8 +83,8 @@ lim.y <- c(pmin, pmax)
 # run the algorithm.
 B <- .01  # bananacity
 # d.par & d.summ should have the same length.
-d.par <- c(2, 2, 2, 2, 2, 2, 2, 2, 2, 2)
-d.summ <- c(3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+d.par <- c(2, 2, 2, 2)
+d.summ <- c(3, 6, 9, 12)
 
 res <- list()
 ret.cor <- vector("numeric", length(d.summ))  # correlation matrix
@@ -103,7 +103,7 @@ cost.final <- proc.time() - ptm.final
 print(cost.final)
 print(ret.cor)
 
-save(res, ret.cor, file=paste0("xin-clabc-banana-num(", n, ").rda"))
+save(res, ret.cor, file=paste0("xin-clabc-banana-num-", n, ".rda"))
 
 rm(res, ret.cor)
 gc()
