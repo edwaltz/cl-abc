@@ -106,9 +106,9 @@ get.corr <- function(total) {   # total looping times
 
 ptm.final <- proc.time()  # time record
 
-jobs <- lapply(c(rep(5, 10)), function(x) mcparallel(get.corr(x)))
+jobs <- lapply(c(rep(2, 10)), function(x) mcparallel(get.corr(x)))
 ret <- mccollect(jobs)
-save(ret, file=paste0("xin-clabc-banana-num(", n, ")-raw.rda"))
+save(ret, file=paste0("xin-clabc-banana-num-", n, "-raw.rda"))
 rm(ret)
 gc()
 
