@@ -5,4 +5,4 @@
 #PBS -l walltime=24:00:00
  
 cd $HOME/cl-abc
-R CMD BATCH xin-clabc-banana-num-test.R
+R CMD BATCH xin-clabc-banana-corr-test.R
