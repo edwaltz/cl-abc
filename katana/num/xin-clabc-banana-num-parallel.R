@@ -89,7 +89,7 @@ get.corr <- function(total) {   # total looping times
   d.par <- c(2, 2, 2, 2)
   d.summ <- c(3, 6, 9, 12)
   
-  ret.cor <- matrix(0, nrow=total, ncol=length(d.summ)))  # correlation matrix
+  ret.cor <- matrix(0, nrow=total, ncol=length(d.summ))  # correlation matrix
 
   for (times in 1:total) {
     for (ind in 1:length(d.summ)) {
@@ -106,7 +106,7 @@ get.corr <- function(total) {   # total looping times
 
 ptm.final <- proc.time()  # time record
 
-jobs <- lapply(c(rep(2, 10)), function(x) mcparallel(get.corr(x)))
+jobs <- lapply(c(rep(10, 2)), function(x) mcparallel(get.corr(x)))
 ret <- mccollect(jobs)
 save(ret, file=paste0("xin-clabc-banana-num-", n, "-raw.rda"))
 rm(ret)
