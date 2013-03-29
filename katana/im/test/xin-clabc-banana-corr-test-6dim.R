@@ -80,7 +80,7 @@ get.corr <- function(b, num) {
   # run the algorithm.
   # d.par & d.summ should have the same length.
   d.par <- 2
-  d.summ <- 3
+  d.summ <- 6
   
   obs <- matrix(0, nrow=1, ncol=d.summ, byrow=TRUE)
   margin <- clabc.step(num, 2, obs[1:2], tol, "full", b)  # get margin
@@ -100,7 +100,7 @@ ptm.final <- proc.time()  # time record
 
 jobs <- lapply(b, function(x) mcparallel(get.corr(x, num)))
 ret <- mccollect(jobs)
-save(ret, file="xin-clabc-banana-corr-test-3dim.rda")
+save(ret, file="xin-clabc-banana-corr-test-6dim.rda")
 rm(ret)
 gc()
 
