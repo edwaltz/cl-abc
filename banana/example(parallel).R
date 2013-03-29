@@ -1,6 +1,5 @@
 # Toy example of "banana" - parallel.
 # Initial settings.
-setwd("/home/edwaltz/Documents/R/cl-abc")
 source("./banana/utils.R")
 library(parallel)
 

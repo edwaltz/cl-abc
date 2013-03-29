@@ -1,6 +1,5 @@
 # Toy example of "banana".
 # Initial settings.
-setwd("/home/edwaltz/Documents/R/cl-abc")
 source("./banana/utils.R")
 
 # constant

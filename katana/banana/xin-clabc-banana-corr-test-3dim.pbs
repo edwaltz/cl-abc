@@ -1,0 +1,8 @@
+#!/bin/bash
+ 
+#PBS -l nodes=1:ppn=3
+#PBS -l vmem=5gb
+#PBS -l walltime=00:03:00
+ 
+cd $HOME/cl-abc/banana
+R CMD BATCH xin-clabc-banana-corr-test-3dim.R

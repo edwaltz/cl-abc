@@ -4,8 +4,8 @@ source("./banana/utils.R")
 
 # constant
 B <- .01  # bananacity
-num <- 5000000  # number of simulated parameters
-tol <- .001  # accuracy of the ABC
+num <- 10000000  # number of simulated parameters
+tol <- .0001  # accuracy of the ABC
 n <- num*tol
 # standard range
 lim.x <- c(-100, 100)
@@ -59,3 +59,11 @@ plot(density(pair$par[, 2], bw=(4/((ncol(pair$par)+2)*n))^(1/(ncol(pair$par)+4))
 plot(density(pair$par[, 3], bw=(4/((ncol(pair$par)+2)*n))^(1/(ncol(pair$par)+4))*sd(pair$par[, 3])), main="theta 3")
 colMeans(pair$par)
 cor(pair$par)
+
+# margin adjustment - 3 dim
+ret <- get.corr(B, 3, num)
+plot(ret$unadj, pch=".", main="3-dim pairwise likelihood, unadjustment", xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(ret$adjust, pch=".", main="3-dim pairwise likelihood, adjustment", xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+ret$cor
+
+ret2 <- run.corr(10, B, 3, num)

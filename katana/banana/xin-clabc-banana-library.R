@@ -27,7 +27,7 @@ clabc.step <- function(num, p, obs, h, type, b) {
   rotate.mat <- matrix(c(cos(pi/4), -sin(pi/4), cos(pi/4), sin(pi/4)), nrow=2)
   
   op <- options(warn=(-1))  # suppress warnings
-#   ptm.final <- proc.time()  # time record
+  #   ptm.final <- proc.time()  # time record
   if (type=="full") {
     # 1.simulation of likelihood function.
     sim <- matrix(0, nrow=num, ncol=d)  # simulated data
@@ -66,7 +66,7 @@ clabc.step <- function(num, p, obs, h, type, b) {
       gc()
     }
   }
-
+  
   options(op)
   return(ret)
 }
@@ -123,10 +123,4 @@ run.corr <- function(total, b, p, num) {
     corr[ind, ] <- get.corr(b, p, num)$cor
   }
   return(corr)
-}
-
-dbanana <- function(y, b=B) {
-  # The true joint posterior.
-  x <- matrix(c(cos(pi / 4), -sin(pi / 4), cos(pi / 4), sin(pi / 4)), nrow=2) %*% y
-  dnorm(x[1], sd=10) * dnorm(x[2]- b * x[1]^2 + 100 * b, sd=1)
 }
