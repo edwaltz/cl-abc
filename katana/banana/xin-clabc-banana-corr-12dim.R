@@ -4,11 +4,11 @@ library(parallel)
 
 num <- 10000000
 p <- 12
-b <- c(0, .01, .05)  # bananacity
+b <- c(0, 0, .01, .01, .05, .05)  # bananacity
 
 ptm.final <- proc.time()  # time record
 
-jobs <- lapply(b, function(x) mcparallel(run.corr(100, x, p, num)))
+jobs <- lapply(b, function(x) mcparallel(run.corr(50, x, p, num)))
 ret <- mccollect(jobs)
 save(ret, file="xin-clabc-banana-corr-12dim-raw.rda")
 rm(ret)
