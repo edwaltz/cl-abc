@@ -10,7 +10,7 @@ ptm.final <- proc.time()  # time record
 
 jobs <- lapply(b, function(x) mcparallel(get.corr(x, p, num)))
 ret <- mccollect(jobs)
-save(ret, file="xin-clabc-banana-corr-test-6dim.rda")
+save(ret, file="xin-clabc-banana-num-test-6dim.rda")
 rm(ret)
 
 gc()
