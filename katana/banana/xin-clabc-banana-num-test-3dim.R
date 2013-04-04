@@ -2,18 +2,14 @@
 source("xin-clabc-banana-library.R")
 library(parallel)
 
-num <- 20000000
+num <- 50000000
 p <- 3
-b <- c(0, .01, .05)  # bananacity
+b <- .01  # bananacity
 
 ptm.final <- proc.time()  # time record
 
-jobs <- lapply(b, function(x) mcparallel(get.corr(x, p, num)))
-ret <- mccollect(jobs)
+ret <- get.corr(b, p, num)
 save(ret, file="xin-clabc-banana-num-test-3dim.rda")
-rm(ret)
-
-gc()
 
 cost.final <- proc.time() - ptm.final
 print(cost.final["elapsed"])
