@@ -2,9 +2,9 @@
 source("xin-clabc-banana-library.R")
 library(parallel)
 
-num <- 20000000
+num <- 50000000
 p <- 9
-b <- c(0, 0, 0, 0, .01, .01, .01, .01, .05, .05, .05, .05)  # bananacity
+b <- c(.01, .01, .01, .01)  # bananacity
 
 ptm.final <- proc.time()  # time record
 

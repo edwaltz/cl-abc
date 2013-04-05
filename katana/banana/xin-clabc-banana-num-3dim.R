@@ -2,13 +2,13 @@
 source("xin-clabc-banana-library.R")
 library(parallel)
 
-num <- 20000000
+num <- 50000000
 p <- 3
-b <- c(0, .01, .05)  # bananacity
+b <- c(.01, .01, .01, .01, .01, .01, .01, .01, .01, .01)  # bananacity
 
 ptm.final <- proc.time()  # time record
 
-jobs <- lapply(b, function(x) mcparallel(run.corr(100, x, p, num)))
+jobs <- lapply(b, function(x) mcparallel(run.corr(10, x, p, num)))
 ret <- mccollect(jobs)
 save(ret, file="xin-clabc-banana-num-3dim-raw.rda")
 rm(ret)
