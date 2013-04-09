@@ -4,12 +4,13 @@ library(parallel)
 
 num <- 100000000
 p <- 12
-b <- c(.01, .01, .01)  # bananacity
+b <- c(.01, .01, .01, .01, .01)  # bananacity
 
 ptm.final <- proc.time()  # time record
+cl <- makeCluster(5)
+ret <- parLapply(b, run.corr, total=20, p=p, num=num)
+stopCluster(cl)
 
-jobs <- lapply(b, function(x) mcparallel(run.corr(20, x, p, num)))
-ret <- mccollect(jobs)
 save(ret, file="xin-clabc-banana-num2-12dim-raw.rda")
 rm(ret)
 
