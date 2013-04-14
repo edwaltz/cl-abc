@@ -2,15 +2,16 @@
 source("xin-clabc-banana-library.R")
 library(parallel)
 
-num <- 10000000
+num <- 100000000
 p <- 12
-b <- c(0, 0, .01, .01, .05, .05)  # bananacity
+b <- c(.01, .01, .01, .01, .01)  # bananacity
 
 ptm.final <- proc.time()  # time record
+cl <- makeCluster(5)
+ret <- parLapply(b, run.corr, total=20, p=p, num=num)
+stopCluster(cl)
 
-jobs <- lapply(b, function(x) mcparallel(run.corr(50, x, p, num)))
-ret <- mccollect(jobs)
-save(ret, file="xin-clabc-banana-corr-12dim-raw.rda")
+save(ret, file="xin-clabc-banana-num2-12dim-raw.rda")
 rm(ret)
 
 gc()

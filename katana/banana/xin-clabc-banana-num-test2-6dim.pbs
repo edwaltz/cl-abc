@@ -1,0 +1,8 @@
+#!/bin/bash
+ 
+#PBS -l nodes=1:ppn=1
+#PBS -l vmem=40gb
+#PBS -l walltime=01:30:00
+
+cd $HOME/cl-abc/banana
+R CMD BATCH xin-clabc-banana-num-test2-6dim.R
