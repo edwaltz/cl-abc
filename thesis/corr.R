@@ -1,34 +1,10 @@
 # correlation analysis
-# 1000 particles
-# load data and data clean
-unadj.corr <- array(0, dim=c(3, 4, 100))
-adj.corr <- array(0, dim=c(3, 4, 100))
+# True correlation
 
-# 3 dim
-load("./data/banana/1000/xin-clabc-banana-corr-3dim-raw.rda")
-for (ind in 1:3) {
-  unadj.corr[ind, 1, ]  <- ret[[ind]][, 1]
-  adj.corr[ind, 1, ]  <-  ret[[ind]][, 2]
-}
-# 6 dim
-load("./data/banana/1000/xin-clabc-banana-corr-6dim-raw.rda")
-for (ind in 1:3) {
-  unadj.corr[ind, 2, ]  <- ret[[ind]][, 1]
-  adj.corr[ind, 2, ]  <-  ret[[ind]][, 2]
-}
-# 9 dim
-load("./data/banana/1000/xin-clabc-banana-corr-9dim-raw.rda")
-for (ind in 1:3) {
-  unadj.corr[ind, 3, ]  <- ret[[ind]][, 1]
-  adj.corr[ind, 3, ]  <-  ret[[ind]][, 2]
-}
-# 12 dim
-load("./data/banana/1000/xin-clabc-banana-corr-12dim-raw.rda")
-for (ind in 1:3) {
-  unadj.corr[ind, 4, ]  <- c(ret[[2 * ind - 1]][, 1], ret[[2 * ind]][, 1])
-  adj.corr[ind, 4, ]  <-  c(ret[[2 * ind - 1]][, 2], ret[[2 * ind]][, 2])
-}
-rm(ret)
+
+# 1,000 particles for b = 0, 0.01, 0.05.
+# load data and data clean
+load("./data/banana/clabc-banana-corr.rda")
 
 # mean and sd analysis
 unadj.mu <- apply(unadj.corr, c(1, 2), mean)
@@ -38,57 +14,54 @@ adj.sd <- apply(adj.corr, c(1, 2), sd)
 
 # plot
 # unadjustment
-old <- par(mfrow=c(1, 2))
-matplot(seq(3, 12, by=3), t(unadj.mu), type="l", main="mean", xlab="dimension", ylab="mu")
-matplot(seq(3, 12, by=3), t(unadj.sd), type="l", main="standard deviation", xlab="dimension", ylab="sd")
-par(old)
+old <- par(mfrow=c(2, 2))
+matplot(seq(3, 12, by=3), t(unadj.mu), type="l", lty=1:3, col=1, 
+        main="Mean before adjustment", xlab="dimension", ylab="mean")
+matpoints(seq(3, 12, by=3), t(unadj.mu), lty=1, col=1, pch=1)
+legend("topright", legend=c("b=0", "b=0.01", "b=0.05"), lty=1:3, cex=0.4)
+matplot(seq(3, 12, by=3), t(unadj.sd), type="l", lty=1:3, col=1, 
+        main="Standard deviation before adjustment", xlab="dimension", ylab="standard deviation")
+matpoints(seq(3, 12, by=3), t(unadj.sd), lty=1, col=1, pch=1)
+legend("topleft", legend=c("b=0", "b=0.01", "b=0.05"), lty=1:3, cex=0.4)
 # adjustment
-old <- par(mfrow=c(1, 2))
-matplot(seq(3, 12, by=3), t(adj.mu), type="l", main="mean", xlab="dimension", ylab="mu")
-matplot(seq(3, 12, by=3), t(adj.sd), type="l", main="standard deviation", xlab="dimension", ylab="sd")
+matplot(seq(3, 12, by=3), t(adj.mu), type="l", lty=1:3, col=1, 
+        main="Mean after adjustment", xlab="dimension", ylab="mean")
+matpoints(seq(3, 12, by=3), t(adj.mu), lty=1, col=1, pch=1)
+legend("topright", legend=c("b=0", "b=0.01", "b=0.05"), lty=1:3, cex=0.4)
+matplot(seq(3, 12, by=3), t(adj.sd), type="l", lty=1:3, col=1, 
+        main="Standard deviation after adjustment", xlab="dimension", ylab="standard deviation")
+matpoints(seq(3, 12, by=3), t(adj.sd), lty=1, col=1, pch=1)
+legend("topleft", legend=c("b=0", "b=0.01", "b=0.05"), lty=1:3, cex=0.4)
 par(old)
 
-# 5000 particles
-# load data and clean data
-unadj2.corr <- matrix(0, nrow=3, ncol=100)
-adj2.corr <- matrix(0, nrow=3, ncol=100)
-# 3 dim
-load("./data/banana/5000/xin-clabc-banana-num-3dim-raw.rda")
-for (ind in 1:10) {
-  unadj2.corr[1, ((ind - 1) * 10 + 1):(ind * 10)]  <- ret[[ind]][, 1]
-  adj2.corr[1, ((ind - 1) * 10 + 1):(ind * 10)]  <- ret[[ind]][, 2]
-}
-# 6 dim
-load("./data/banana/5000/xin-clabc-banana-num-6dim-raw.rda")
-for (ind in 1:5) {
-  unadj2.corr[2, ((ind - 1) * 20 + 1):(ind * 20)]  <- ret[[ind]][, 1]
-  adj2.corr[2, ((ind - 1) * 20 + 1):(ind * 20)]  <- ret[[ind]][, 2]
-} 
-# 9 dim
-load("./data/banana/5000/xin-clabc-banana-num-9dim-raw.rda")
-for (ind in 1:4) {
-  unadj2.corr[3, ((ind - 1) * 25 + 1):(ind * 25)]  <- ret[[ind]][, 1]
-  adj2.corr[3, ((ind - 1) * 25 + 1):(ind * 25)]  <- ret[[ind]][, 2]
-} 
+# 1,000, 5,000 and 10,000 particles for b =0.01.
+# load data and data clean
+load("./data/banana/clabc-banana-num.rda")
 
 # mean and sd analysis
-unadj2.mu <- apply(unadj2.corr, 1, mean)
-unadj2.sd <- apply(unadj2.corr, 1, sd)
-adj2.mu <- apply(adj2.corr, 1, mean)
-adj2.sd <- apply(adj2.corr, 1, sd)
+unadj.mu <- apply(unadj.num, c(1, 2), mean)
+unadj.sd <- apply(unadj.num, c(1, 2), sd)
+adj.mu <- apply(adj.num, c(1, 2), mean)
+adj.sd <- apply(adj.num, c(1, 2), sd)
 
 # plot
 # unadjustment
-old <- par(mfrow=c(1, 2))
-plot(c(3, 6, 9), unadj.mu[2, 1:3], type="l", main="mean", xlab="dimension", ylab="mu")
-lines(c(3, 6, 9), unadj2.mu, lty=2)
-plot(c(3, 6, 9), unadj.sd[2, 1:3], type="l", main="sd", xlab="dimension", ylab="mu")
-lines(c(3, 6, 9), unadj2.sd, lty=2)
-par(old)
+old <- par(mfrow=c(2, 2))
+matplot(seq(3, 12, by=3), t(unadj.mu), type="l", lty=1:3, col=1, 
+        main="Mean before adjustment", xlab="dimension", ylab="mean")
+matpoints(seq(3, 12, by=3), t(unadj.mu), lty=1, col=1, pch=1)
+legend("topright", legend=c("1,000 paricles", "5,000 paricles", "10,000 paricles"), lty=1:3, cex=0.4)
+matplot(seq(3, 12, by=3), t(unadj.sd), type="l", lty=1:3, col=1, 
+        main="Standard deviation before adjustment", xlab="dimension", ylab="standard deviation")
+matpoints(seq(3, 12, by=3), t(unadj.sd), lty=1, col=1, pch=1)
+legend("topleft", legend=c("1,000 paricles", "5,000 paricles", "10,000 paricles"), lty=1:3, cex=0.4)
 # adjustment
-old <- par(mfrow=c(1, 2))
-plot(c(3, 6, 9), adj.mu[2, 1:3], type="l", main="mean", xlab="dimension", ylab="mu")
-lines(c(3, 6, 9), adj2.mu, lty=2)
-plot(c(3, 6, 9), adj.sd[2, 1:3], type="l", main="sd", xlab="dimension", ylab="mu")
-lines(c(3, 6, 9), adj2.sd, lty=2)
+matplot(seq(3, 12, by=3), t(adj.mu), type="l", lty=1:3, col=1, 
+        main="Mean after adjustment", xlab="dimension", ylab="mean")
+matpoints(seq(3, 12, by=3), t(adj.mu), lty=1, col=1, pch=1)
+legend("topright", legend=c("1,000 paricles", "5,000 paricles", "10,000 paricles"), lty=1:3, cex=0.4)
+matplot(seq(3, 12, by=3), t(adj.sd), type="l", lty=1:3, col=1, 
+        main="Standard deviation after adjustment", xlab="dimension", ylab="standard deviation")
+matpoints(seq(3, 12, by=3), t(adj.sd), lty=1, col=1, pch=1)
+legend("topleft", legend=c("1,000 paricles", "5,000 paricles", "10,000 paricles"), lty=1:3, cex=0.4)
 par(old)
