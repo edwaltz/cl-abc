@@ -1,6 +1,6 @@
 # Unit test.
 # Initial settings.
-source("./banana/utils.R")
+source("./banana/utils-gaussian.R")
 
 # constant
 B <- .01  # bananacity
