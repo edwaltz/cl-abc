@@ -3,7 +3,7 @@
 source("./banana/utils-gaussian.R")
 
 # constant
-B <- .01  # bananacity
+B <- 0.01  # bananacity
 num <- 10000000  # number of simulated parameters
 tol <- .0001  # accuracy of the ABC
 n <- num*tol
@@ -14,7 +14,7 @@ lim.y <- c(-100, 100)
 # full - 2 dim
 obs <- matrix(0, nrow=1, ncol=2, byrow=TRUE)
 full <- clabc.step(num, 2, obs, tol, "full", b=B)
-plot(full$par, pch=".", main="2-dim standard likelihood", xlab="theta1", ylab="theta2", xlim=lim.x, ylim=lim.y)
+plot(full$par, pch=".", main="2-dim standard likelihood", xlab="theta1", ylab="theta2", xlim=lim.x/2, ylim=lim.y/2)
 plot(density(full$par[, 1], bw=(4/((ncol(full$par)+2)*n))^(1/(ncol(full$par)+4))*sd(full$par[, 1])), main="theta 1")
 plot(density(full$par[, 2], bw=(4/((ncol(full$par)+2)*n))^(1/(ncol(full$par)+4))*sd(full$par[, 1])), main="theta 2")
 colMeans(full$par)
