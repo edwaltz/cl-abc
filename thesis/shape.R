@@ -200,3 +200,91 @@ plot(ret$adjust, asp=1, pch=".", main="12-dim, 10,000", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 par(old)
+
+# before adjustment
+old  <-  par(mfrow=c(3, 4))
+
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
+plot(ret[[1]]$unadj, asp=1, pch=".", main="3-dim, b=0", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
+plot(ret[[1]]$unadj, asp=1, pch=".", main="6-dim, b=0", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
+plot(ret[[1]]$unadj, asp=1, pch=".", main="9-dim, b=0", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
+plot(ret[[1]]$unadj, asp=1, pch=".", main="12-dim, b=0", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
+plot(ret[[2]]$unadj, asp=1, pch=".", main="3-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
+plot(ret[[2]]$unadj, asp=1, pch=".", main="6-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
+plot(ret[[2]]$unadj, asp=1, pch=".", main="9-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
+plot(ret[[2]]$unadj, asp=1, pch=".", main="12-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
+plot(ret[[3]]$unadj, asp=1, pch=".", main="3-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
+plot(ret[[3]]$unadj, asp=1, pch=".", main="6-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
+plot(ret[[3]]$unadj, asp=1, pch=".", main="9-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
+plot(ret[[3]]$unadj, asp=1, pch=".", main="12-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+
+par(old)
+
+# after adjustment
+old  <-  par(mfrow=c(3, 4))
+
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
+plot(ret[[1]]$adjust, asp=1, pch=".", main="3-dim, b=0", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
+plot(ret[[1]]$adjust, asp=1, pch=".", main="6-dim, b=0", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
+plot(ret[[1]]$adjust, asp=1, pch=".", main="9-dim, b=0", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
+plot(ret[[1]]$adjust, asp=1, pch=".", main="12-dim, b=0", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
+plot(ret[[2]]$adjust, asp=1, pch=".", main="3-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
+plot(ret[[2]]$adjust, asp=1, pch=".", main="6-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
+plot(ret[[2]]$adjust, asp=1, pch=".", main="9-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
+plot(ret[[2]]$adjust, asp=1, pch=".", main="12-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
+plot(ret[[3]]$adjust, asp=1, pch=".", main="3-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
+plot(ret[[3]]$adjust, asp=1, pch=".", main="6-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
+plot(ret[[3]]$adjust, asp=1, pch=".", main="9-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
+plot(ret[[3]]$adjust, asp=1, pch=".", main="12-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+     xlab=expression(theta[1]), ylab=expression(theta[2]))
+
+par(old)
