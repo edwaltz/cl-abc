@@ -29,42 +29,42 @@ contour(pos.x, pos.y, posterior2)
 old  <-  par(mfrow=c(3, 4))
 
 load("./data/banana/1000/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[1]]$unadj, asp=1, pch=".", main="3-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$unadj, asp=1, pch=".", main="B=0, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[1]]$unadj, asp=1, pch=".", main="6-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$unadj, asp=1, pch=".", main="B=0, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[1]]$unadj, asp=1, pch=".", main="9-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$unadj, asp=1, pch=".", main="B=0, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[1]]$unadj, asp=1, pch=".", main="12-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$unadj, asp=1, pch=".", main="B=0, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/1000/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="3-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$unadj, asp=1, pch=".", main="B=0.01, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="6-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$unadj, asp=1, pch=".", main="B=0.01, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="9-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$unadj, asp=1, pch=".", main="B=0.01, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="12-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$unadj, asp=1, pch=".", main="B=0.01, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/1000/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[3]]$unadj, asp=1, pch=".", main="3-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$unadj, asp=1, pch=".", main="B=0.05, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[3]]$unadj, asp=1, pch=".", main="6-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$unadj, asp=1, pch=".", main="B=0.05, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[3]]$unadj, asp=1, pch=".", main="9-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$unadj, asp=1, pch=".", main="B=0.05, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[3]]$unadj, asp=1, pch=".", main="12-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$unadj, asp=1, pch=".", main="B=0.05, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 par(old)
@@ -73,42 +73,42 @@ par(old)
 old  <-  par(mfrow=c(3, 4))
 
 load("./data/banana/1000/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[1]]$adjust, asp=1, pch=".", main="3-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$adjust, asp=1, pch=".", main="B=0, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[1]]$adjust, asp=1, pch=".", main="6-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$adjust, asp=1, pch=".", main="B=0, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[1]]$adjust, asp=1, pch=".", main="9-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$adjust, asp=1, pch=".", main="B=0, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[1]]$adjust, asp=1, pch=".", main="12-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$adjust, asp=1, pch=".", main="B=0, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/1000/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="3-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$adjust, asp=1, pch=".", main="B=0.01, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="6-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$adjust, asp=1, pch=".", main="B=0.01, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="9-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$adjust, asp=1, pch=".", main="B=0.01, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="12-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$adjust, asp=1, pch=".", main="B=0.01, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/1000/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[3]]$adjust, asp=1, pch=".", main="3-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$adjust, asp=1, pch=".", main="B=0.05, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[3]]$adjust, asp=1, pch=".", main="6-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$adjust, asp=1, pch=".", main="B=0.05, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[3]]$adjust, asp=1, pch=".", main="9-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$adjust, asp=1, pch=".", main="B=0.05, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[3]]$adjust, asp=1, pch=".", main="12-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$adjust, asp=1, pch=".", main="B=0.05, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 par(old)
@@ -117,43 +117,43 @@ par(old)
 old  <-  par(mfrow=c(3, 4))
 
 load("./data/banana/1000/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="3-dim, 1,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret[[2]]$unadj, asp=1, pch=".", main=expression(paste(k[N]==1, ",000, p=3")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="6-dim, 1,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret[[2]]$unadj, asp=1, pch=".", main=expression(paste(k[N]==1, ",000, p=6")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="9-dim, 1,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret[[2]]$unadj, asp=1, pch=".", main=expression(paste(k[N]==1, ",000, p=9")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="12-dim, 1,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret[[2]]$unadj, asp=1, pch=".", main=expression(paste(k[N]==1, ",000, p=12")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/5000/xin-clabc-banana-num-test-3dim.rda")
-plot(ret$unadj, asp=1, pch=".", main="3-dim, 5,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$unadj, asp=1, pch=".", main=expression(paste(k[N]==5, ",000, p=3")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/5000/xin-clabc-banana-num-test-6dim.rda")
-plot(ret$unadj, asp=1, pch=".", main="6-dim, 5,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$unadj, asp=1, pch=".", main=expression(paste(k[N]==5, ",000, p=6")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/5000/xin-clabc-banana-num-test-9dim.rda")
-plot(ret$unadj, asp=1, pch=".", main="9-dim, 5,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$unadj, asp=1, pch=".", main=expression(paste(k[N]==5, ",000, p=9")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/5000/xin-clabc-banana-num-test-12dim.rda")
-plot(ret$unadj, asp=1, pch=".", main="12-dim, 5,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$unadj, asp=1, pch=".", main=expression(paste(k[N]==5, ",000, p=12")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/10000/xin-clabc-banana-num-test2-3dim.rda")
-plot(ret$unadj, asp=1, pch=".", main="3-dim, 10,000", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$unadj, asp=1, pch=".", main=expression(paste(k[N]==10, ",000, p=3")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/10000/xin-clabc-banana-num-test2-6dim.rda")
-plot(ret$unadj, asp=1, pch=".", main="6-dim, 10,000", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$unadj, asp=1, pch=".", main=expression(paste(k[N]==10, ",000, p=6")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/10000/xin-clabc-banana-num-test2-9dim.rda")
-plot(ret$unadj, asp=1, pch=".", main="9-dim, 10,000", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$unadj, asp=1, pch=".", main=expression(paste(k[N]==10, ",000, p=9")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/10000/xin-clabc-banana-num-test2-12dim.rda")
-plot(ret$unadj, asp=1, pch=".", main="12-dim, 10,000", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$unadj, asp=1, pch=".", main=expression(paste(k[N]==10, ",000, p=12")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 par(old)
 
@@ -161,43 +161,43 @@ par(old)
 old  <-  par(mfrow=c(3, 4))
 
 load("./data/banana/1000/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="3-dim, 1,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret[[2]]$adjust, asp=1, pch=".", main=expression(paste(k[N]==1, ",000, p=3")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="6-dim, 1,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret[[2]]$adjust, asp=1, pch=".", main=expression(paste(k[N]==1, ",000, p=6")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="9-dim, 1,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret[[2]]$adjust, asp=1, pch=".", main=expression(paste(k[N]==1, ",000, p=9")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/1000/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="12-dim, 1,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret[[2]]$adjust, asp=1, pch=".", main=expression(paste(k[N]==1, ",000, p=12")),
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/5000/xin-clabc-banana-num-test-3dim.rda")
-plot(ret$adjust, asp=1, pch=".", main="3-dim, 5,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$adjust, asp=1, pch=".", main=expression(paste(k[N]==5, ",000, p=3")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/5000/xin-clabc-banana-num-test-6dim.rda")
-plot(ret$adjust, asp=1, pch=".", main="6-dim, 5,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$adjust, asp=1, pch=".", main=expression(paste(k[N]==5, ",000, p=6")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/5000/xin-clabc-banana-num-test-9dim.rda")
-plot(ret$adjust, asp=1, pch=".", main="9-dim, 5,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$adjust, asp=1, pch=".", main=expression(paste(k[N]==5, ",000, p=9")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/5000/xin-clabc-banana-num-test-12dim.rda")
-plot(ret$adjust, asp=1, pch=".", main="12-dim, 5,000 particles", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$adjust, asp=1, pch=".", main=expression(paste(k[N]==5, ",000, p=12")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/10000/xin-clabc-banana-num-test2-3dim.rda")
-plot(ret$adjust, asp=1, pch=".", main="3-dim, 10,000", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$adjust, asp=1, pch=".", main=expression(paste(k[N]==10, ",000, p=3")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/10000/xin-clabc-banana-num-test2-6dim.rda")
-plot(ret$adjust, asp=1, pch=".", main="6-dim, 10,000", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$adjust, asp=1, pch=".", main=expression(paste(k[N]==10, ",000, p=6")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/10000/xin-clabc-banana-num-test2-9dim.rda")
-plot(ret$adjust, asp=1, pch=".", main="9-dim, 10,000", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$adjust, asp=1, pch=".", main=expression(paste(k[N]==10, ",000, p=9")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/10000/xin-clabc-banana-num-test2-12dim.rda")
-plot(ret$adjust, asp=1, pch=".", main="12-dim, 10,000", xlim=lim.x, ylim=lim.y,
-     xlab=expression(theta[1]), ylab=expression(theta[2]))
+plot(ret$adjust, asp=1, pch=".", main=expression(paste(k[N]==10, ",000, p=12")), 
+     xlim=lim.x, ylim=lim.y, xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 par(old)
 
@@ -205,42 +205,42 @@ par(old)
 old  <-  par(mfrow=c(3, 4))
 
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[1]]$unadj, asp=1, pch=".", main="3-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$unadj, asp=1, pch=".", main="B=0, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[1]]$unadj, asp=1, pch=".", main="6-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$unadj, asp=1, pch=".", main="B=0, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[1]]$unadj, asp=1, pch=".", main="9-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$unadj, asp=1, pch=".", main="B=0, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[1]]$unadj, asp=1, pch=".", main="12-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$unadj, asp=1, pch=".", main="B=0, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="3-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$unadj, asp=1, pch=".", main="B=0.01, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="6-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$unadj, asp=1, pch=".", main="B=0.01, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="9-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$unadj, asp=1, pch=".", main="B=0.01, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[2]]$unadj, asp=1, pch=".", main="12-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$unadj, asp=1, pch=".", main="B=0.01, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[3]]$unadj, asp=1, pch=".", main="3-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$unadj, asp=1, pch=".", main="B=0.05, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[3]]$unadj, asp=1, pch=".", main="6-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$unadj, asp=1, pch=".", main="B=0.05, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[3]]$unadj, asp=1, pch=".", main="9-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$unadj, asp=1, pch=".", main="B=0.05, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[3]]$unadj, asp=1, pch=".", main="12-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$unadj, asp=1, pch=".", main="B=0.05, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 par(old)
@@ -249,42 +249,42 @@ par(old)
 old  <-  par(mfrow=c(3, 4))
 
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[1]]$adjust, asp=1, pch=".", main="3-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$adjust, asp=1, pch=".", main="B=0, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[1]]$adjust, asp=1, pch=".", main="6-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$adjust, asp=1, pch=".", main="B=0, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[1]]$adjust, asp=1, pch=".", main="9-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$adjust, asp=1, pch=".", main="B=0, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[1]]$adjust, asp=1, pch=".", main="12-dim, b=0", xlim=lim.x, ylim=lim.y,
+plot(ret[[1]]$adjust, asp=1, pch=".", main="B=0, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="3-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$adjust, asp=1, pch=".", main="B=0.01, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="6-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$adjust, asp=1, pch=".", main="B=0.01, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="9-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$adjust, asp=1, pch=".", main="B=0.01, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[2]]$adjust, asp=1, pch=".", main="12-dim, b=0.01", xlim=lim.x, ylim=lim.y,
+plot(ret[[2]]$adjust, asp=1, pch=".", main="B=0.01, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-3dim.rda")
-plot(ret[[3]]$adjust, asp=1, pch=".", main="3-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$adjust, asp=1, pch=".", main="B=0.05, p=3", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-6dim.rda")
-plot(ret[[3]]$adjust, asp=1, pch=".", main="6-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$adjust, asp=1, pch=".", main="B=0.05, p=6", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-9dim.rda")
-plot(ret[[3]]$adjust, asp=1, pch=".", main="9-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$adjust, asp=1, pch=".", main="B=0.05, p=9", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 load("./data/banana/gaussian/xin-clabc-banana-corr-test-12dim.rda")
-plot(ret[[3]]$adjust, asp=1, pch=".", main="12-dim, b=0.05", xlim=lim.x, ylim=lim.y,
+plot(ret[[3]]$adjust, asp=1, pch=".", main="B=0.05, p=12", xlim=lim.x, ylim=lim.y,
      xlab=expression(theta[1]), ylab=expression(theta[2]))
 
 par(old)
