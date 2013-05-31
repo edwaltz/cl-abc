@@ -23,7 +23,7 @@ clabc.step <- function(num, p, obs, h, type, b) {
   d <- length(obs.val)  # dimension for summary statistic
   n <- num*h  # number of parameter points
   ret <- list()
-  ret$prior <- matrix(rnorm(num * p, 0, pmax / 2), nrow=num)
+  ret$prior <- matrix(runif(num*p, pmin, pmax), nrow=num)
   rotate.mat <- matrix(c(cos(pi / 4), -sin(pi / 4), cos(pi / 4), sin(pi / 4)), nrow = 2)
   
   op <- options(warn=(-1))  # suppress warnings
