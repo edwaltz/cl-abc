@@ -23,8 +23,6 @@ grid.y <- seq(lim.y[1], lim.y[2], .5)
 grid.z1 <- matrix(0, nrow=length(grid.x), ncol=length(grid.y))
 grid.z2 <- matrix(0, nrow=length(grid.x), ncol=length(grid.y))
 
-
-
 old <- par(mfrow=c(3, 2))
 
 # standard B=0
