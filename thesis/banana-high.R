@@ -33,17 +33,17 @@ ret[[4]] <- clabc.step(num, 9, obs, tol, "full", b=B)$par
 
 old <- par(mfrow=c(2, 2))
 
-contour(grid.x, grid.y, grid.z, main="3 dimension", xlab=expression(theta[(1)]), 
-        ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+contour(grid.x, grid.y, grid.z, main="3 dimension", xlab=expression(theta[1]), 
+        ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 points(ret[[1]], pch=".", cex=1.5)
-contour(grid.x, grid.y, grid.z, main="5 dimension", xlab=expression(theta[(1)]), 
-        ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+contour(grid.x, grid.y, grid.z, main="5 dimension", xlab=expression(theta[1]), 
+        ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 points(ret[[2]], pch=".", cex=1.5)
-contour(grid.x, grid.y, grid.z, main="7 dimension", xlab=expression(theta[(1)]), 
-        ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+contour(grid.x, grid.y, grid.z, main="7 dimension", xlab=expression(theta[1]), 
+        ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 points(ret[[3]], pch=".", cex=1.5)
-contour(grid.x, grid.y, grid.z, main="9 dimension", xlab=expression(theta[(1)]), 
-        ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+contour(grid.x, grid.y, grid.z, main="9 dimension", xlab=expression(theta[1]), 
+        ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 points(ret[[4]], pch=".", cex=1.5)
 
 par(old)

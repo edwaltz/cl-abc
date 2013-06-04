@@ -23,43 +23,43 @@ grid.y <- seq(lim.y[1], lim.y[2], .5)
 grid.z1 <- matrix(0, nrow=length(grid.x), ncol=length(grid.y))
 grid.z2 <- matrix(0, nrow=length(grid.x), ncol=length(grid.y))
 
-old <- par(mfrow=c(3, 2))
+old <- par(mfrow=c(2, 3))
 
 # standard B=0
 for (ind in 1:length(grid.x)) {
   grid.z1[ind, ] <- apply(cbind(grid.x[ind], grid.y),1, dbanana.s, 0)
 }
-contour(grid.x, grid.y, grid.z1, main="Standard likelihood, B=0", xlab=expression(theta[(1)]), 
-        ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
-# rotated B=0
-for (ind in 1:length(grid.x)) {
-  grid.z2[ind, ] <- apply(cbind(grid.x[ind], grid.y),1, dbanana.r, 0)
-}
-contour(grid.x, grid.y, grid.z2, main="Modified likelihood, B=0", xlab=expression(theta[(1)]), 
-        ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+contour(grid.x, grid.y, grid.z1, main="Standard B=0", xlab=expression(theta[1]), 
+        ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 # standard B=0.01
 for (ind in 1:length(grid.x)) {
   grid.z1[ind, ] <- apply(cbind(grid.x[ind], grid.y),1, dbanana.s, 0.01)
 }
-contour(grid.x, grid.y, grid.z1, main="Standard likelihood, B=0.01", xlab=expression(theta[(1)]), 
-        ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
-# rotated B=0.01
-for (ind in 1:length(grid.x)) {
-  grid.z2[ind, ] <- apply(cbind(grid.x[ind], grid.y),1, dbanana.r, 0.01)
-}
-contour(grid.x, grid.y, grid.z2, main="Modified likelihood, B=0.01", xlab=expression(theta[(1)]), 
-        ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+contour(grid.x, grid.y, grid.z1, main="Standard B=0.01", xlab=expression(theta[1]), 
+        ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 # standard B=0.05
 for (ind in 1:length(grid.x)) {
   grid.z1[ind, ] <- apply(cbind(grid.x[ind], grid.y),1, dbanana.s, 0.05)
 }
-contour(grid.x, grid.y, grid.z1, main="Standard likelihood, B=0.05", xlab=expression(theta[(1)]), 
-        ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+contour(grid.x, grid.y, grid.z1, main="Standard B=0.05", xlab=expression(theta[1]), 
+        ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
+# rotated B=0
+for (ind in 1:length(grid.x)) {
+  grid.z2[ind, ] <- apply(cbind(grid.x[ind], grid.y),1, dbanana.r, 0)
+}
+contour(grid.x, grid.y, grid.z2, main="Modified B=0", xlab=expression(theta[1]), 
+        ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
+# rotated B=0.01
+for (ind in 1:length(grid.x)) {
+  grid.z2[ind, ] <- apply(cbind(grid.x[ind], grid.y),1, dbanana.r, 0.01)
+}
+contour(grid.x, grid.y, grid.z2, main="Modified B=0.01", xlab=expression(theta[1]), 
+        ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 # rotated B=0.05
 for (ind in 1:length(grid.x)) {
   grid.z2[ind, ] <- apply(cbind(grid.x[ind], grid.y),1, dbanana.r, 0.05)
 }
-contour(grid.x, grid.y, grid.z2, main="Modified likelihood, B=0.05", xlab=expression(theta[(1)]), 
-        ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+contour(grid.x, grid.y, grid.z2, main="Modified B=0.05", xlab=expression(theta[1]), 
+        ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 
 par(old)

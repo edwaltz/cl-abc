@@ -37,19 +37,19 @@ ret[[4]] <- clabc.step(num, 2, obs, tol, "full", b=B)$par
 old  <- par(mfrow=c(2, 2))
 
 contour(grid.x, grid.y, grid.z, main=expression(paste(k[N]/N == 10, "%")), 
-        xlab=expression(theta[(1)]), ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+        xlab=expression(theta[1]), ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 points(ret[[4]][sample(1000000, size=1000, replace=TRUE), ], pch=".", cex=1.5)
 
 contour(grid.x, grid.y, grid.z, main=expression(paste(k[N]/N == 1, "%")), 
-        xlab=expression(theta[(1)]), ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+        xlab=expression(theta[1]), ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 points(ret[[3]][sample(100000, size=1000, replace=TRUE), ], pch=".", cex=1.5)
 
 contour(grid.x, grid.y, grid.z, main=expression(paste(k[N]/N == 0.1, "%")), 
-        xlab=expression(theta[(1)]), ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+        xlab=expression(theta[1]), ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 points(ret[[2]][sample(10000, size=1000, replace=TRUE), ], pch=".", cex=1.5)
 
 contour(grid.x, grid.y, grid.z, main=expression(paste(k[N]/N == .01, "%")), 
-        xlab=expression(theta[(1)]), ylab=expression(theta[(2)]), xlim=lim.x, ylim=lim.y, asp=1)
+        xlab=expression(theta[1]), ylab=expression(theta[2]), xlim=lim.x, ylim=lim.y, asp=1)
 points(ret[[1]], pch=".", cex=1.5)
 
 par(old)
